@@ -54,7 +54,7 @@ def konyv_kiberlese():
         berlo = input("Kibérlő neve: ")
         kivett_konyvek[konyv] = berlo
         mentes_utolso_helyre_kiberelt_konyvek(konyv,berlo)
-        input("Sikeres felvétel!\nTovább... ")
+        input("\nSikeres felvétel!\nTovább... ")
     else:
         bekert_2 = input("\nNincs ilyen nevű könyv!\n0 - Tovább \t\t 1 - Újra \t\t 2 - Könyv hozzáadása az összes könyvekhez\nVálasztott: ")
         if bekert_2 == "1":
@@ -78,7 +78,7 @@ def konyv_visszahozasa():
         kivett_konyvek.pop(konyv)
 
         mentes_kiberelt_konyvek()
-        input("Sikeres visszahozatal!\nTovább... ")
+        input("\nSikeres visszahozatal!\nTovább... ")
     else:
         print(f"A(z) {konyv} könyv nem szerepen a kivett könyvek listájában!")
         bekert_2 = input("0 - tovább\t\t1 - újrapróbálkozás\nVálasztás: ")
@@ -98,10 +98,27 @@ def osszes_konyvbol_torles():
     print("-------------------KÖNYV TÖRLÉSE------------------\n")
 
     osszes_konyv_kiirasa()
-    konyv_index = int(input("\nTörölni kívánt könyv sorszáma: "))-1
-    osszes_konyv.pop(konyv_index)
-    mentes_osszes_konyv()
-    input("Könyv törlése sikeres!\nTovább... ")
+    konyv_index = input("\nTörölni kívánt könyv sorszáma: ")
+    try:
+        konyv_index = int(konyv_index)-1                                                                            #számmá próbálja konvertálni
+
+    except ValueError:
+        bekert_2 = input("\nKérem számot adjon meg!\n0 - tovább \t\t 1 - Újra\nVálasztás: ")                          #ha nem sikerül: problémázik
+        if bekert_2 == "1":
+            osszes_konyvbol_torles()
+
+    else:                                                                                                           #ha sikerül: 
+        try:                                                                                                                #megpróbálja kitörölni a listából                                                                                     
+            osszes_konyv.pop(konyv_index)
+
+        except IndexError:                                                                                                  #ha nem sikerül: problémázik
+            bekert_2 = input("\nNincs ilyen sorszámú könyv!\n0 - tovább \t\t 1 - Újra\nVálasztás: ")
+            if bekert_2 == "1":
+                osszes_konyvbol_torles()
+                
+        else:                                                                                                               #ha sikerül: minden hapy
+            mentes_osszes_konyv()   
+            input("\nKönyv törlése sikeres!\nTovább... ")
 
 def mentes_utolso_helyre_osszes_konyv(konyv):
     file = open(osszes_kony_filenev, "a", encoding="utf-8")
