@@ -12,4 +12,4 @@ Könyvtár programja:
     -4 - könyv visszahozása
     -5 - összes könyvből törlés
     -6 - új könyv feljegyzése
-    (-7 - elérhető könyvek kiirása)
+    -7 - elérhető könyvek kiirása

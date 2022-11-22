@@ -34,3 +34,11 @@ while bekert != "0":
 
     elif bekert == "6":
         uj_konyv_felvetele()
+
+    elif bekert == "7":
+        system("cls")
+        print("-------------------ELÉRHETŐ KÖNYVEK------------------\n")
+
+        elerheto_konyvek_kiirasa()
+        
+        input("\nTovább... ")
