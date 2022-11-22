@@ -1,4 +1,4 @@
-from data import osszes_konyv, kivett_konyvek, kiberelt_konyvek
+from data import osszes_konyv, kivett_konyvek, kiberelt_konyvek_nevei
 from os import system
 
 osszes_kony_filenev = "ossz_konyv.txt"
@@ -18,7 +18,7 @@ def menu():
 
 def data_megtoltes():
 
-    #osszes elérhető könyvek
+    #összes könyvek
     file = open(osszes_kony_filenev,"r",encoding="utf-8")
     for row in file:
         osszes_konyv.append(row.strip())
@@ -31,10 +31,6 @@ def data_megtoltes():
         szeletelt = row.strip().split(";")
         kivett_konyvek[szeletelt[0]] = szeletelt[1]
     file.close()
-
-    #elérhető könyvek
-    for i in kivett_konyvek:
-        kiberelt_konyvek.append(i)
 
 def osszes_konyv_kiirasa():
     for i in range(len(osszes_konyv)):
@@ -51,14 +47,21 @@ def mentes_utolso_helyre_kiberelt_konyvek(konyv, nev):
 
 def konyv_kiberlese():
     system("cls")
-    print("-------------------KÖNV KIBÉRLÉSE-------------------")
+    print("-------------------KÖNV KIBÉRLÉSE-------------------\n")
     elerheto_konyvek_kiirasa()
-    konyv_index = int(input("Könyv sorszáma: "))
-    berlo = input("Kibérlő neve: ")
-    kivett_konyvek[osszes_konyv[konyv_index -1]] = berlo
-    mentes_utolso_helyre_kiberelt_konyvek(osszes_konyv[konyv_index -1],berlo)
-    input("Sikeres felvétel!\nTovább... ")
-
+    konyv = input("\nKönyv neve: ")
+    if (konyv in kiberelt_konyvek_nevei) != True and (konyv in osszes_konyv) == True:                                                    #nincsen benne a kivett könyvekbe, viszont benne vanaz összes könyvekben 
+        berlo = input("Kibérlő neve: ")
+        kivett_konyvek[konyv] = berlo
+        mentes_utolso_helyre_kiberelt_konyvek(konyv,berlo)
+        input("Sikeres felvétel!\nTovább... ")
+    else:
+        bekert_2 = input("\nNincs ilyen nevű könyv!\n0 - Tovább \t\t 1 - Újra \t\t 2 - Könyv hozzáadása az összes könyvekhez\nVálasztott: ")
+        if bekert_2 == "1":
+            konyv_kiberlese()
+        elif bekert_2 == "2":
+            uj_konyv_felvetele()
+        
 def mentes_kiberelt_konyvek():
     file = open(kivett_konyvek_filenev, "w", encoding="utf-8")
     for key, value in kivett_konyvek.items():
@@ -93,8 +96,9 @@ def mentes_osszes_konyv():
 def osszes_konyvbol_torles():
     system("cls")
     print("-------------------KÖNYV TÖRLÉSE------------------\n")
+
     osszes_konyv_kiirasa()
-    konyv_index = int(input("\nTörölni kívánt könyv: "))-1
+    konyv_index = int(input("\nTörölni kívánt könyv sorszáma: "))-1
     osszes_konyv.pop(konyv_index)
     mentes_osszes_konyv()
     input("Könyv törlése sikeres!\nTovább... ")
@@ -113,6 +117,9 @@ def uj_konyv_felvetele():
     input("\nKönyv felvétele sikeres!\nTovább... ")
 
 def elerheto_konyvek_kiirasa():
+    for i in kivett_konyvek:
+        kiberelt_konyvek_nevei.append(i)
+
     for i in osszes_konyv:
-        if (i in kiberelt_konyvek) != True:
+        if (i in kiberelt_konyvek_nevei) != True:
             print(i)

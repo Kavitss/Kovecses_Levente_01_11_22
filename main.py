@@ -7,17 +7,17 @@ data_megtoltes()
 
 while bekert != "0":
     menu()
-    bekert = input("Választott: ")
+    bekert = input("\nVálasztott: ")
 
     if bekert == "1":
         system("cls")
-        print("-------------------ÖSSZES KÖNYV-------------------")
+        print("-------------------ÖSSZES KÖNYV-------------------\n")
         osszes_konyv_kiirasa()
         input("\nTovább...  ")
 
     elif bekert == "2":
         system("cls")
-        print("-------------------KIBÉRELT KÖNYVEK-------------------")
+        print("-------------------KIBÉRELT KÖNYVEK-------------------\n")
 
         kiberelt_konyvek_kiirasa()
 
