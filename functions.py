@@ -81,6 +81,7 @@ def mentes_osszes_konyv():
         if i == 0:
             file.write(osszes_konyv[i])
         file.write(f"\n{osszes_konyv[i]}")
+    file.close()
 
 def osszes_konyvbol_torles():
     system("cls")
@@ -90,3 +91,16 @@ def osszes_konyvbol_torles():
     osszes_konyv.pop(konyv_index)
     mentes_osszes_konyv()
     input("Könyv törlése sikeres!\nTovább... ")
+
+def mentes_utolso_helyre_osszes_konyv(konyv):
+    file = open(osszes_kony_filenev, "a", encoding="utf-8")
+    file.write(f"\n{konyv}")
+    file.close()
+
+def uj_konyv_felvetele():
+    system("cls")
+    print("-------------------ÚJ KÖNYV FELVÉTELE------------------\n")
+    uj_konyv = input("Könyv neve:")
+    osszes_konyv.append(uj_konyv)
+    mentes_utolso_helyre_osszes_konyv(uj_konyv)
+    input("\nKönyv felvétele sikeres!\nTovább... ")

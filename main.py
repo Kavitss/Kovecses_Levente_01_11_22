@@ -33,4 +33,4 @@ while bekert != "0":
         osszes_konyvbol_torles()
 
     elif bekert == "6":
-        pass
+        uj_konyv_felvetele()
