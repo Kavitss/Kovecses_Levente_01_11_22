@@ -1,23 +1,30 @@
 from functions import *
+from os import system
+bekert = ""
 
-bekert = -1
-
-#adatok megtöltése
+#adatok betöltése
 data_megtoltes()
 
-while bekert != 0:
+while bekert != "0":
     menu()
-    bekert = int(input("Választott: "))
+    bekert = input("Választott: ")
 
-    if bekert == 1:
+    if bekert == "1":
+        system("cls")
+        print("-------------------ÖSSZES KÖNYV-------------------")
         osszes_konyv_kiirasa()
-    elif bekert == 2:
+        input("\nTovább...  ")
+
+    elif bekert == "2":
         kiberelt_konyvek_kiirasa()
-    elif bekert == 3:
+
+    elif bekert == "3":
+        konyv_kiberlese()
+
+    elif bekert == "4":
         pass
-    elif bekert == 4:
+    
+    elif bekert == "5":
         pass
-    elif bekert == 5:
-        pass
-    elif bekert == 6:
+    elif bekert == "6":
         pass

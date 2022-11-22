@@ -15,7 +15,6 @@ def menu():
     print("5 - összes könyvből törlés")
     print("6 - új könyv feljegyzése")
 
-
 def data_megtoltes():
     #osszes elérhető könyvek
     file = open(osszes_kony_filenev,"r",encoding="utf-8")
@@ -31,11 +30,9 @@ def data_megtoltes():
     file.close()
 
 def osszes_konyv_kiirasa():
-    system("cls")
-    for i in osszes_konyv:
-        print(i)
-    input("\nTovább...  ")
-
+    for i in range(len(osszes_konyv)):
+        print(f"{i+1}\t{osszes_konyv[i]}")
+    
 def kiberelt_konyvek_kiirasa():
     system("cls")
     print("-------------------KIBÉRELT KÖNYVEK-------------------")
@@ -44,3 +41,18 @@ def kiberelt_konyvek_kiirasa():
         print(f"{key}\t\t{value}")
     
     input("\nTovább... ")
+
+def mentes_utolso_helyre_kiberelt_konyvek(konyv, nev):
+    file = open(kivett_konyvek_filenev, "a", encoding="utf-8")
+    file.write(f"\n{konyv};{nev}")
+    file.close()
+
+def konyv_kiberlese():
+    system("cls")
+    print("-------------------KÖNV KIBÉRLÉSE-------------------")
+    osszes_konyv_kiirasa()
+    konyv_index = int(input("Könyv sorszáma: "))
+    berlo = input("Kibérlő neve: ")
+    kivett_konyvek[osszes_konyv[konyv_index -1]] = berlo
+    mentes_utolso_helyre_kiberelt_konyvek(osszes_konyv[konyv_index -1],berlo)
+    input("Sikeres felvétel!\nTovább... ")
