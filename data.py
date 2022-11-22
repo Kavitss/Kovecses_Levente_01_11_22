@@ -1,2 +1,2 @@
-osszes_kony = []
-kiberelt_konyvek = {}
+osszes_konyv = []
+kivett_konyvek = {}

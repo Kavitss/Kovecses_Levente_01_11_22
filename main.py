@@ -2,6 +2,9 @@ from functions import *
 
 bekert = -1
 
+#adatok megtöltése
+data_megtoltes()
+
 while bekert != 0:
     menu()
     bekert = input()
