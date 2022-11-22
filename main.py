@@ -16,15 +16,21 @@ while bekert != "0":
         input("\nTovább...  ")
 
     elif bekert == "2":
+        system("cls")
+        print("-------------------KIBÉRELT KÖNYVEK-------------------")
+
         kiberelt_konyvek_kiirasa()
+
+        input("\nTovább... ")
 
     elif bekert == "3":
         konyv_kiberlese()
 
     elif bekert == "4":
-        pass
+        konyv_visszahozasa()
     
     elif bekert == "5":
         pass
+
     elif bekert == "6":
         pass

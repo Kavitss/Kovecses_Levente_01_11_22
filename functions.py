@@ -34,13 +34,8 @@ def osszes_konyv_kiirasa():
         print(f"{i+1}\t{osszes_konyv[i]}")
     
 def kiberelt_konyvek_kiirasa():
-    system("cls")
-    print("-------------------KIBÉRELT KÖNYVEK-------------------")
-
     for key, value in kivett_konyvek.items():
         print(f"{key}\t\t{value}")
-    
-    input("\nTovább... ")
 
 def mentes_utolso_helyre_kiberelt_konyvek(konyv, nev):
     file = open(kivett_konyvek_filenev, "a", encoding="utf-8")
@@ -56,3 +51,29 @@ def konyv_kiberlese():
     kivett_konyvek[osszes_konyv[konyv_index -1]] = berlo
     mentes_utolso_helyre_kiberelt_konyvek(osszes_konyv[konyv_index -1],berlo)
     input("Sikeres felvétel!\nTovább... ")
+
+def mentes_kiberelt_konyvek():
+    file = open(kivett_konyvek_filenev, "w", encoding="utf-8")
+    for key, value in kivett_konyvek.items():
+        file.write(f"{key};{value}\n")
+    file.close()
+
+
+def konyv_visszahozasa():
+    system("cls")
+    print("-------------------KÖNYV VISSZAHOZÁSA-------------------\n")
+    kiberelt_konyvek_kiirasa()
+    konyv = input("\nVisszahozott könyv neve: ")
+
+    if konyv in kivett_konyvek:
+        kivett_konyvek.pop(konyv)
+
+        mentes_kiberelt_konyvek()
+        input("Sikeres visszahozatal!\nTovább... ")
+    else:
+        print(f"A(z) {konyv} könyv nem szerepen a kivett könyvek listájában!")
+        bekert_2 = input("0 - tovább\t\t1 - újrapróbálkozás\nVálasztás: ")
+        if bekert_2 == "1":
+            konyv_visszahozasa()
+
+    
