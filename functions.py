@@ -29,3 +29,9 @@ def data_megtoltes():
         szeletelt = row.strip().split(";")
         kivett_konyvek[szeletelt[0]] = szeletelt[1]
     file.close()
+
+def osszes_konyv_kiirasa():
+    system("cls")
+    for i in osszes_konyv:
+        print(i)
+    input("Tovább...")

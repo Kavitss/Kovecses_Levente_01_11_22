@@ -10,7 +10,7 @@ while bekert != 0:
     bekert = input()
 
     if bekert == 1:
-        pass
+        osszes_konyv_kiirasa()
     elif bekert == 2:
         pass
     elif bekert == 3:
