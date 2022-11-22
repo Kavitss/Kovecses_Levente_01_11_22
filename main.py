@@ -30,7 +30,7 @@ while bekert != "0":
         konyv_visszahozasa()
     
     elif bekert == "5":
-        pass
+        osszes_konyvbol_torles()
 
     elif bekert == "6":
         pass

@@ -58,7 +58,6 @@ def mentes_kiberelt_konyvek():
         file.write(f"{key};{value}\n")
     file.close()
 
-
 def konyv_visszahozasa():
     system("cls")
     print("-------------------KÖNYV VISSZAHOZÁSA-------------------\n")
@@ -76,4 +75,18 @@ def konyv_visszahozasa():
         if bekert_2 == "1":
             konyv_visszahozasa()
 
-    
+def mentes_osszes_konyv():
+    file = open(osszes_kony_filenev, "w", encoding="utf-8")
+    for i in range(len(osszes_konyv)):
+        if i == 0:
+            file.write(osszes_konyv[i])
+        file.write(f"\n{osszes_konyv[i]}")
+
+def osszes_konyvbol_torles():
+    system("cls")
+    print("-------------------KÖNYV TÖRLÉSE------------------\n")
+    osszes_konyv_kiirasa()
+    konyv_index = int(input("\nTörölni kívánt könyv: "))-1
+    osszes_konyv.pop(konyv_index)
+    mentes_osszes_konyv()
+    input("Könyv törlése sikeres!\nTovább... ")
