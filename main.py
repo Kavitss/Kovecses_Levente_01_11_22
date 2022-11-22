@@ -7,12 +7,12 @@ data_megtoltes()
 
 while bekert != 0:
     menu()
-    bekert = input()
+    bekert = int(input("Választott: "))
 
     if bekert == 1:
         osszes_konyv_kiirasa()
     elif bekert == 2:
-        pass
+        kiberelt_konyvek_kiirasa()
     elif bekert == 3:
         pass
     elif bekert == 4:

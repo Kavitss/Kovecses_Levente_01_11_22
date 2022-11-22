@@ -34,4 +34,13 @@ def osszes_konyv_kiirasa():
     system("cls")
     for i in osszes_konyv:
         print(i)
-    input("Tovább...")
+    input("\nTovább...  ")
+
+def kiberelt_konyvek_kiirasa():
+    system("cls")
+    print("-------------------KIBÉRELT KÖNYVEK-------------------")
+
+    for key, value in kivett_konyvek.items():
+        print(f"{key}\t\t{value}")
+    
+    input("\nTovább... ")
